@@ -104,7 +104,6 @@
       will-change: transform;
     }
 
-    /* Word-by-word title reveal */
     .hero-title {
       font-family: "Syncopate", sans-serif;
       text-transform: uppercase;
@@ -119,10 +118,7 @@
       gap: 0.55em;
     }
 
-    .word-clip {
-      display: inline-block;
-      overflow: hidden;
-    }
+    .word-clip { display: inline-block; overflow: hidden; }
 
     .word-clip span {
       display: inline-block;
@@ -193,7 +189,6 @@
     }
     .btn:hover { background: var(--accent-dark); color: #fff; }
 
-    /* Outlined secondary button */
     .btn-outline {
       display: inline-block;
       background: transparent;
@@ -206,31 +201,35 @@
       font-size: 1rem;
       border: 1px solid rgba(255,255,255,0.45);
       cursor: pointer;
-      transition: background 0.25s, border-color 0.25s, color 0.25s;
+      transition: background 0.25s, border-color 0.25s;
       letter-spacing: 0.04em;
     }
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: #fff;
-    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
     /* ─── Gallery ─── */
     #gallery { background: var(--bg-2); }
 
+    /*
+      3-column grid, 4 rows — zero gaps, mix of portrait + landscape:
+
+      [ portrait g1  ] [ landscape g2           ]
+      [ portrait g1  ] [ landscape g3           ]
+      [ landscape g4           ] [ portrait g5  ]
+      [ landscape g6           ] [ portrait g5  ]
+    */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 420px 420px 420px 420px;
-      gap: 3px;
+      grid-template-rows: 430px 430px 430px 430px;
+      gap: 4px;
     }
 
-    /* Layout: portraits in g2 & g4, landscapes everywhere else */
-    .g1 { grid-column: 1/3; grid-row: 1/2; }   /* landscape */
-    .g2 { grid-column: 3/4; grid-row: 1/3; }   /* portrait  */
-    .g3 { grid-column: 1/3; grid-row: 2/3; }   /* landscape */
-    .g4 { grid-column: 1/2; grid-row: 3/5; }   /* portrait  */
-    .g5 { grid-column: 2/4; grid-row: 3/4; }   /* landscape */
-    .g6 { grid-column: 2/4; grid-row: 4/5; }   /* landscape */
+    .g1 { grid-column: 1 / 2; grid-row: 1 / 3; }   /* portrait  — left col, rows 1–2 */
+    .g2 { grid-column: 2 / 4; grid-row: 1 / 2; }   /* landscape — right 2 cols, row 1 */
+    .g3 { grid-column: 2 / 4; grid-row: 2 / 3; }   /* landscape — right 2 cols, row 2 */
+    .g4 { grid-column: 1 / 3; grid-row: 3 / 4; }   /* landscape — left 2 cols, row 3 */
+    .g5 { grid-column: 3 / 4; grid-row: 3 / 5; }   /* portrait  — right col, rows 3–4 */
+    .g6 { grid-column: 1 / 3; grid-row: 4 / 5; }   /* landscape — left 2 cols, row 4 */
 
     .gallery-item {
       overflow: hidden;
@@ -252,18 +251,15 @@
       transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .gallery-item:hover .g-pan img { transform: scale(1.06); }
+    .gallery-item:hover .g-pan img { transform: scale(1.05); }
 
-    /* ─── Info panel ─── */
+    /* ─── Info Panel ─── */
     #info {
       background: var(--bg-3);
       padding: 5.5rem 2rem 5rem;
     }
 
-    .info-wrap {
-      max-width: 1050px;
-      margin: 0 auto;
-    }
+    .info-wrap { max-width: 1050px; margin: 0 auto; }
 
     .block-title {
       font-family: "Syncopate", sans-serif;
@@ -331,12 +327,7 @@
       margin: 0 auto;
     }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .form-group { margin-bottom: 1rem; }
 
     label {
@@ -380,7 +371,6 @@
       color: var(--accent);
       text-decoration: none;
       font-size: 1rem;
-      letter-spacing: 0.03em;
       transition: color 0.2s;
     }
     .contact-row a:hover { color: var(--text); }
@@ -397,7 +387,7 @@
       text-transform: uppercase;
     }
 
-    /* ─── Scroll fade-up ─── */
+    /* ─── Scroll animation ─── */
     .fade-up {
       opacity: 0;
       transform: translateY(40px);
@@ -409,14 +399,14 @@
     @media (max-width: 1024px) {
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(6, 280px);
+        grid-template-rows: 300px 300px 300px 300px 300px;
       }
-      .g1 { grid-column: 1/3; grid-row: 1; }
-      .g2 { grid-column: 1;   grid-row: 2/4; }
-      .g3 { grid-column: 2;   grid-row: 2; }
-      .g4 { grid-column: 2;   grid-row: 3/5; }
-      .g5 { grid-column: 1/3; grid-row: 4; }
-      .g6 { grid-column: 1/3; grid-row: 5; }
+      .g1 { grid-column: 1/2; grid-row: 1/3; }
+      .g2 { grid-column: 2/3; grid-row: 1/2; }
+      .g3 { grid-column: 2/3; grid-row: 2/3; }
+      .g4 { grid-column: 1/3; grid-row: 3/4; }
+      .g5 { grid-column: 2/3; grid-row: 4/6; }
+      .g6 { grid-column: 1/2; grid-row: 4/6; }
     }
 
     @media (max-width: 700px) {
@@ -424,7 +414,7 @@
       .nav-left, .nav-right { justify-content: center; }
       .hero-title { font-size: clamp(1.8rem, 8vw, 3rem); letter-spacing: 0.18em; }
       .gallery-grid { display: flex; flex-direction: column; }
-      .gallery-item { height: 260px; }
+      .gallery-item { height: 280px; }
       .g-pan { inset: 0; }
       .services-grid, .form-row { grid-template-columns: 1fr; }
     }
@@ -438,7 +428,7 @@
       <div class="nav-left">
         <a href="#home">Home</a>
         <a href="#services">Services</a>
-        <!-- ↓ Update this href to your real portfolio URL when ready -->
+        <!-- Update this href when your portfolio is live -->
         <a href="https://your-portfolio-link.com" target="_blank">Portfolio</a>
       </div>
       <div class="logo">Photos by Dhruv</div>
@@ -449,7 +439,7 @@
     </div>
   </header>
 
-  <!-- Splash Screen -->
+  <!-- Splash -->
   <section id="home">
     <div class="hero">
       <div class="hero-bg" id="js-hero-bg"></div>
@@ -466,58 +456,64 @@
         </p>
         <div class="hero-cta-wrap">
           <a class="btn" href="#booking">Book a Session</a>
-          <!-- ↓ Update this href to your real portfolio URL when ready -->
+          <!-- Update this href when your portfolio is live -->
           <a class="btn-outline" href="https://your-portfolio-link.com" target="_blank">View Portfolio</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Gallery -->
+  <!-- Gallery grid: 2 portrait slots + 4 landscape slots, zero gaps -->
   <section id="gallery">
     <div class="gallery-grid">
 
-      <!-- g1: landscape -->
+      <!-- g1: PORTRAIT (col 1, rows 1–2) ─ your photo -->
+      <!-- Rename your blue-polo photo to portrait-1.jpg and place it next to index.html -->
       <div class="gallery-item g1 fade-up">
-        <div class="g-pan" data-speed="0.04">
-          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=2000&q=80" alt="Event photography">
-        </div>
-      </div>
-
-      <!-- g2: portrait — YOUR PHOTO (blue polo) -->
-      <!-- Make sure portrait-1.jpg is in the same folder as index.html -->
-      <div class="gallery-item g2 fade-up" style="transition-delay:0.1s">
         <div class="g-pan" data-speed="-0.05">
-          <img src="portrait-1.jpg" alt="Portrait session">
+          <img
+            src="portrait-1.jpg"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=900&h=1600&q=80'"
+            alt="Portrait session">
         </div>
       </div>
 
-      <!-- g3: landscape -->
+      <!-- g2: LANDSCAPE (cols 2–3, row 1) -->
+      <div class="gallery-item g2 fade-up" style="transition-delay:0.1s">
+        <div class="g-pan" data-speed="0.04">
+          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1600&h=900&q=80" alt="Event photography">
+        </div>
+      </div>
+
+      <!-- g3: LANDSCAPE (cols 2–3, row 2) -->
       <div class="gallery-item g3 fade-up" style="transition-delay:0.2s">
         <div class="g-pan" data-speed="0.035">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=2000&q=80" alt="Photography session">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1600&h=900&q=80" alt="Photography session">
         </div>
       </div>
 
-      <!-- g4: portrait — YOUR PHOTO (pink blazer) -->
-      <!-- Make sure portrait-2.jpg is in the same folder as index.html -->
-      <div class="gallery-item g4 fade-up" style="transition-delay:0.05s">
-        <div class="g-pan" data-speed="-0.045">
-          <img src="portrait-2.jpg" alt="Portrait session">
-        </div>
-      </div>
-
-      <!-- g5: landscape -->
-      <div class="gallery-item g5 fade-up" style="transition-delay:0.15s">
+      <!-- g4: LANDSCAPE (cols 1–2, row 3) -->
+      <div class="gallery-item g4 fade-up" style="transition-delay:0.15s">
         <div class="g-pan" data-speed="0.045">
-          <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=2000&q=80" alt="Event coverage">
+          <img src="https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?auto=format&fit=crop&w=1600&h=900&q=80" alt="Event coverage">
         </div>
       </div>
 
-      <!-- g6: landscape -->
+      <!-- g5: PORTRAIT (col 3, rows 3–4) ─ your photo -->
+      <!-- Rename your pink-blazer photo to portrait-2.jpg and place it next to index.html -->
+      <div class="gallery-item g5 fade-up" style="transition-delay:0.05s">
+        <div class="g-pan" data-speed="-0.045">
+          <img
+            src="portrait-2.jpg"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&h=1600&q=80'"
+            alt="Portrait session">
+        </div>
+      </div>
+
+      <!-- g6: LANDSCAPE (cols 1–2, row 4) -->
       <div class="gallery-item g6 fade-up" style="transition-delay:0.25s">
         <div class="g-pan" data-speed="-0.03">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=80" alt="Portrait session">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&h=900&q=80" alt="Photography session">
         </div>
       </div>
 
@@ -528,7 +524,6 @@
   <section id="info">
     <div class="info-wrap">
 
-      <!-- Services -->
       <div id="services">
         <h2 class="block-title fade-up">Services</h2>
         <p class="free-note fade-up">All services are currently free.</p>
@@ -546,7 +541,6 @@
 
       <hr class="panel-divider fade-up">
 
-      <!-- Booking -->
       <div id="booking">
         <h2 class="block-title fade-up">Booking</h2>
         <p class="booking-subtitle fade-up">Send a request and I'll get back to you soon.</p>
@@ -585,7 +579,6 @@
 
       <hr class="panel-divider fade-up">
 
-      <!-- Contact -->
       <div id="contact">
         <h2 class="block-title fade-up">Contact</h2>
         <div class="contact-row fade-up" style="transition-delay:0.1s">
@@ -602,13 +595,11 @@
   </footer>
 
   <script>
-    /* Fade-up on scroll */
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 
-    /* Scroll-driven parallax */
     const heroBg      = document.getElementById('js-hero-bg');
     const heroContent = document.getElementById('js-hero-content');
     const pans        = document.querySelectorAll('.g-pan');
